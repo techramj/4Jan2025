@@ -7,16 +7,27 @@ public class Employee {
 	private int id;
 	private String name;
 	private double salary;  
+	private Vehicle vehicle;
+	
 	public Employee() {
 		System.out.println("default constructor called");
 	}
 	
 	public Employee(int id, String name, double salary) {
-		System.out.println("parameterized constructor called...");
+		System.out.println("parameterized employee constructor with 3 parameter called...");
 		this.id = id;
 		this.name = name;
 	    this.salary = salary;
 	}
+	
+	public Employee(int id, String name, double salary,  Vehicle vehicle) {
+		System.out.println("parameterized employee constructor with 4 parameter called...");
+		this.id = id;
+		this.name = name;
+	    this.salary = salary;
+	    this.vehicle = vehicle;
+	}
+	
 	
 	public void display() {
 		System.out.println(toString());
@@ -45,11 +56,19 @@ public class Employee {
 	public void setSalary(double salary) {
 		this.salary = salary;
 	}
+	
+	public Vehicle getVehicle() {
+		return vehicle;
+	}
+	
+	public void setVehicle(Vehicle vehicle) {
+		this.vehicle = vehicle;
+	}
 
 	@Override
 	public String toString() {
 		int x = 10;  //x is local variable
-		return "Employee [id=" + id + ", name=" + name + ", salary=" + salary + "]" ;
+		return "id=" + id + ", name=" + name + ", salary=" + salary + ", Vehicle="+vehicle ;
 	}
 
 	@Override
