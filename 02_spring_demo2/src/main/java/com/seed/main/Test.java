@@ -23,11 +23,21 @@ public class Test {
 		emp.display();
 		*/
 		
+		int a = 10;
+		int b = 10;
+		System.out.println(a==b);
+		
+		Employee emp1 = new Employee(1, "Jack", 1000);
+		Employee emp2 = new Employee(1, "Jack", 1000);
+		System.out.println(emp1  == emp2);
+		
 		ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
 		System.out.println(context.getClass());
 		Employee e1 = (Employee)context.getBean("emp");
+		Employee e2 = context.getBean("emp", Employee.class);
 		e1.display();
-		
+		e2.display();
+		System.out.println(e1 == e2);
 	
 		
 	
