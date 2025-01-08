@@ -49,3 +49,13 @@ emp.setSalary(1000);
 ```
 
 ## dependency inject or IOC(inversion of control)
+
+
+## eager loading and lazy loading
+
+
+## scope of bean
+1. singleton
+2. prototype
+3. request
+4. session

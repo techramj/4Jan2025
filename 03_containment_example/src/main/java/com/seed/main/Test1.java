@@ -13,8 +13,8 @@ public class Test1 {
 		ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
 		//javaExample();
 		
-		//Employee emp = context.getBean("emp", Employee.class);
-		//System.out.println(emp);
+		Employee emp = context.getBean("emp", Employee.class);
+		System.out.println(emp);
 		
 		Engine e1 = context.getBean("engine1", Engine.class);
 		Engine e2 = context.getBean("engine2", Engine.class);
