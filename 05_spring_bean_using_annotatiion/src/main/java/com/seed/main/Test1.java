@@ -4,6 +4,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.seed.bean.Address;
 import com.seed.bean.Employee;
 import com.seed.config.SpringConfig;
 
@@ -29,6 +30,13 @@ public class Test1 {
 		System.out.println(emp3 == emp4);
 		System.out.println("emp3 ="+emp3);
 		System.out.println("emp4 ="+emp4);
+		
+		Address address = context.getBean("address", Address.class);
+		System.out.println(address);
+		
+		
+		Employee employee = context.getBean("employee", Employee.class);
+		System.out.println(employee);
 	
 	}
 	

@@ -1,14 +1,16 @@
 package com.seed.bean;
 
+import java.util.Objects;
+
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component  //by default the bean name will be same name of a class i.e employee
+@Component(value = "emp1234")
 public class Employee {
 	
 	private int id;
 	private String name;
 	private double salary;  
-	private Address address;
 	
 	public Employee() {
 		System.out.println("default constructor called");
@@ -48,28 +50,32 @@ public class Employee {
 	public void setSalary(double salary) {
 		this.salary = salary;
 	}
-	
-	public void setAddress(Address address) {
-		this.address = address;
-	}
-	
-	public Address getAddress() {
-		return address;
-	}
 
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", name=" + name + ", salary=" + salary + "address ="+address;
-	}
-	
-	public void init() {
-		
-	}
-	
-	public void empDestroy() {
-		
+		int x = 10;  //x is local variable
+		return "Employee [id=" + id + ", name=" + name + ", salary=" + salary + "]" ;
 	}
 
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, name, salary);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Employee other = (Employee) obj;
+		return id == other.id && Objects.equals(name, other.name)
+				&& Double.doubleToLongBits(salary) == Double.doubleToLongBits(other.salary);
+	}
+	
+	
 	
 
 }

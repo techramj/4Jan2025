@@ -47,6 +47,21 @@ emp.setSalary(1000);
     Employee emp1 = new Employee(1,"sam",5000);
     emp1.setVehicle(car);
 ```
+## Application context
+1. using xml
+```
+ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+
+where spring.xml is the config file.
+
+```
+
+2. using config class
+```
+ApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
+
+where SpringConfig is the config class
+```
 
 ## dependency inject or IOC(inversion of control)
 
