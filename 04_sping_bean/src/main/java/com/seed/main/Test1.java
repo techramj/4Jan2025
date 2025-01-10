@@ -34,7 +34,6 @@ public class Test1 {
 		boolean isCarSame = car1 == car2;
 		System.out.println("isCarSame: "+isCarSame);
 		
-		
 
 	}
 	
