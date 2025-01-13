@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"> 
+    
+    <context:component-scan base-package="com.seed.bean" />
+    
+    <bean name="car" class="com.seed.bean.Car">
+    	<property name="name" value="BMW" />
+    	<property name="color" value="white" />
+    </bean>
+    
+    <bean  class="com.seed.bean.Car" autowire-candidate="false">
+    	<property name="name" value="Audi" />
+    	<property name="color" value="Silver" />
+    </bean>
+    
+    <bean name="address1" class="com.seed.bean.Address">
+    	<property name="city" value="Pune" />
+    </bean>
+    
+    <bean name="emp1" class="com.seed.bean.Employee">
+    	<property name="id" value="1" />
+    	<property name="name" value="Sam" />
+    	<property name="salary" value="5000" />
+    	<property name="address" ref="address1" />
+    	<property name="car" ref="car" />
+    </bean>
+    
+    <bean name="emp2" class="com.seed.bean.Employee" autowire="byName">
+    	<property name="id" value="1" />
+    	<property name="name" value="Sam" />
+    	<property name="salary" value="5000" />
+    </bean>
+    
+    <bean name="emp3" class="com.seed.bean.Employee" autowire="byType">
+    	<property name="id" value="1" />
+    	<property name="name" value="Sam" />
+    	<property name="salary" value="5000" />
+    </bean>
+    
+
+</beans>

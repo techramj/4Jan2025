@@ -5,7 +5,7 @@ public class Car {
 	private String color;
 	
 	public Car() {
-		System.out.println(this.getClass().getSimpleName()+"  default constructor called...");
+		// TODO Auto-generated constructor stub
 	}
 
 	public Car(String name, String color) {
@@ -19,7 +19,6 @@ public class Car {
 	}
 
 	public void setName(String name) {
-		System.out.println(this.getClass().getSimpleName()+"  setName method called...");
 		this.name = name;
 	}
 
@@ -36,15 +35,6 @@ public class Car {
 		return "Car [name=" + name + ", color=" + color + "]";
 	}
 	
-	public void init() {
-		
-		System.out.println(this.getClass().getSimpleName()+"  init method called...");
-	}
-	
-	
-	public void carDestroy() {
-		System.out.println(this.getClass().getSimpleName()+"  carDestroy method called...");                                             																									
-	}
 	
 
 }
