@@ -3,15 +3,15 @@ package com.seed.bean;
 public class Car {
 	private String name;
 	private String color;
-	private Engine engine;
 	
 	public Car() {
-
+		// TODO Auto-generated constructor stub
 	}
 
-	public Car(Engine engine) {
-		System.out.println("car contructor called");
-		this.engine = engine;
+	public Car(String name, String color) {
+		super();
+		this.name = name;
+		this.color = color;
 	}
 
 	public String getName() {
@@ -28,10 +28,6 @@ public class Car {
 
 	public void setColor(String color) {
 		this.color = color;
-	}
-	
-	public Engine getEngine() {
-		return engine;
 	}
 
 	@Override

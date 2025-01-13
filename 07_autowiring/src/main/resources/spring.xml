@@ -7,7 +7,7 @@
     
     <context:component-scan base-package="com.seed.bean" />
     
-    <bean name="car" class="com.seed.bean.Car">
+    <bean name="car" class="com.seed.bean.Car" autowire="constructor">
     	<property name="name" value="BMW" />
     	<property name="color" value="white" />
     </bean>
@@ -40,6 +40,8 @@
     	<property name="name" value="Sam" />
     	<property name="salary" value="5000" />
     </bean>
+    
+    <bean name="engine" class="com.seed.bean.Engine" ></bean>
     
 
 </beans>
