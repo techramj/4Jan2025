@@ -15,7 +15,7 @@ public class Test {
 		LoanService loanService = (LoanService)context.getBean("loanService");
 		
 	
-		loanService.issueLoan("10001");
+		loanService.payDue("10001");
 		//loanService.payDue("10003");
 		
 		

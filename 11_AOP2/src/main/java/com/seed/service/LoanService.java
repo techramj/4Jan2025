@@ -1,6 +1,8 @@
 package com.seed.service;
 
+import org.springframework.stereotype.Component;
 
+@Component
 public class LoanService {
 	
 	public void issueLoan(String customerId) {
@@ -11,6 +13,9 @@ public class LoanService {
 
 		System.out.println("pending due is clear for customer " + customerId);
 		System.out.println("Deleting the customer entry from loan Account");
+		if(1== 1) {
+			throw new RuntimeException();
+		}
 
 	}
 

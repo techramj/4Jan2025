@@ -1,24 +1,28 @@
 package com.seed.service;
 
-import java.lang.reflect.Method;
 import java.time.LocalDateTime;
 
-import org.springframework.aop.AfterReturningAdvice;
-import org.springframework.aop.MethodBeforeAdvice;
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.springframework.stereotype.Component;
 
-public class LoggingAspect implements MethodBeforeAdvice, AfterReturningAdvice {
+@Component
+@Aspect
+public class LoggingAspect {
 
-	@Override
-	public void afterReturning(Object returnValue, Method method, Object[] args, Object target) throws Throwable {
-		System.out.println("Exit: "+target.getClass().getSimpleName()
-				+"."+method.getModifiers()+" at "+LocalDateTime.now());
-		
+	
+	@Before("execution(* LoanService.*(..))")
+	public void before(JoinPoint jp) {
+		System.out.println("Entered: "+jp.getSignature().getDeclaringTypeName()+"."+jp.getSignature().getName()+" at "+LocalDateTime.now());
 	}
-
-	@Override
-	public void before(Method method, Object[] args, Object target) throws Throwable {
-		System.out.println("Entered: "+target.getClass().getSimpleName()
-				+"."+method.getModifiers()+" at "+LocalDateTime.now());
+	
+	@AfterReturning("execution(* LoanService.*(..))")
+	public void after(JoinPoint jp) {
+		System.out.println("Exit: "+jp.getSignature().getDeclaringTypeName()+"."+jp.getSignature().getName()+" at "+LocalDateTime.now());
 	}
 	
 	
