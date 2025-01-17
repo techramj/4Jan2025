@@ -25,6 +25,4 @@ public class LoggingAspect {
 		System.out.println("Exit: "+jp.getSignature().getDeclaringTypeName()+"."+jp.getSignature().getName()+" at "+LocalDateTime.now());
 	}
 	
-	
-
 }

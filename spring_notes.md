@@ -126,3 +126,19 @@ where SpringConfig is the config class
 Note: https://docs.spring.io/spring-framework/docs/2.0.8/reference/aop.html#:~:text=In%20the%20%40AspectJ%20annotation%2Dstyle,have%20a%20void%20return%20type).
 `
 
+## how to create bean
+```
+<bean >
+@Component()
+@Bean()
+```
+
+
+
+# spring jdbc
+CRUD
+
+
+
+
+
