@@ -1,11 +1,14 @@
 package com.seed.entity;
 
+import java.util.List;
+
 public class Employee {
 	
 	private int id;
 	private String name;
 	private double salary;
 	private int yearOfExperience;
+	private List<String> mobileNumbers;
 	
 	public Employee() {
 		// TODO Auto-generated constructor stub
