@@ -14,5 +14,6 @@
         <property name="format_sql">false</property>
         
         <mapping class="com.seed.entity.Employee"/>
+        <mapping class="com.seed.entity.Car"/>
     </session-factory>
 </hibernate-configuration>

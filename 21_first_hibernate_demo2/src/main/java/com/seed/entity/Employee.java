@@ -1,7 +1,9 @@
 package com.seed.entity;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -10,17 +12,16 @@ import javax.persistence.Table;
 public class Employee {
 
 	@Id
+	@GeneratedValue
 	private Integer id;
 	
-	@Column(columnDefinition = "varchar(40)") //always mentioned db datatype
+	@Column(updatable = false)
 	private String name;
+	private Double salary;
 	
-	@Column(name = "salary")
-	private Double basicSalary;
+	@Embedded
+	private Address address;
 	
-	@Column(length = 30)
-	private String city;
-
 	public Integer getId() {
 		return id;
 	}
@@ -37,20 +38,20 @@ public class Employee {
 		this.name = name;
 	}
 
-	public Double getBasicSalary() {
-		return basicSalary;
-	}
-
-	public void setBasicSalary(Double salary) {
-		this.basicSalary = salary;
+	public Double getSalary() {
+		return salary;
 	}
 	
-	public String getCity() {
-		return city;
+	public void setSalary(Double salary) {
+		this.salary = salary;
 	}
 	
-	public void setCity(String city) {
-		this.city = city;
+	public Address getAddress() {
+		return address;
+	}
+	
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 }

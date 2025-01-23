@@ -17,12 +17,16 @@ public class Test1 {
 		dao.setSessionFactory(sf);
 		
 		Employee emp = new Employee();
-		emp.setId(2);
 		emp.setName("Jack");
-		emp.setBasicSalary(5000.0);
-		emp.setCity("Pune");
-		dao.save(emp);
+		//Employee e1 = dao.save(emp);
+		//display(e1);
 		
+	}
+	
+	public static void display(Employee emp) {
+		System.out.println("id= "+emp.getId()+" name: "+emp.getName()+" salary= "+emp.getSalary());
+		System.out.println("_____________________________________");
+		System.out.println();
 	}
 
 }
