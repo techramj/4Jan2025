@@ -12,12 +12,12 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="passport2")
+@Table(name="passport4")
 public class Passport {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pass2_id_seq")
-	@SequenceGenerator(name="pass2_id_seq", sequenceName = "passport2_id_seq", initialValue = 10000)
+	@SequenceGenerator(name="pass2_id_seq", sequenceName = "passport4_id_seq", initialValue = 10000)
 	@Column(name="passport_id")
 	private Long passportId;
 

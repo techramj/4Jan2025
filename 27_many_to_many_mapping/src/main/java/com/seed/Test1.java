@@ -21,7 +21,7 @@ public class Test1 {
 		System.out.println(sf);
 		
 		//addSampleEmployee();
-		fetchExample();
+		//fetchExample();
 		
 	}
 	

@@ -4,32 +4,31 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import com.seed.entity.Employee;
-import com.seed.entity.Passport;
+import com.seed.entity.Department;
 import com.seed.util.HibernateUtil;
 
-public class EmployeeDao {
-
+public class DepartmentDao {
+	
 	private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-
-	public Employee save(Employee emp) {
+	
+	public Department save(Department dept) {
 
 		Session session = sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
 
-		session.save(emp);
+		session.save(dept);
 
 		tx.commit();
 		session.close();
-		System.out.println("Employee added...." + emp.getId());
-		return emp;
+		System.out.println("Departmnet added...." + dept.getDepartmentId());
+		return dept;
 	}
 
 	public void delete(int id) {
 		Session session = sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
          
-		Employee emp = session.get(Employee.class, id);
+		Department emp = session.get(Department.class, id);
 		if(emp != null) {
 			session.delete(emp);
 		}
@@ -37,29 +36,28 @@ public class EmployeeDao {
 		session.close();
 	}
 
-	public Employee update(Employee emp) {
+	public Department update(Department dept) {
 
 		Session session = sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
 
-		session.saveOrUpdate(emp);
+		session.saveOrUpdate(dept);
 
 		tx.commit();
 		session.close();
-		System.out.println("Employee updated...." + emp.getId());
-		return emp;
+		System.out.println("Departments updated....");
+		return dept;
 	}
 	
-	public Employee findById(int id) {
+	public Department findById(int id) {
 		Session session = sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
 
-		Employee emp = session.get(Employee.class, id);
+		Department dept = session.get(Department.class, id);
 
-		String dname = emp.getDepartment().getDepartmentName();
 		tx.commit();
 		session.close();
-		return  emp;
+		return  dept;
 		
 	}
 	

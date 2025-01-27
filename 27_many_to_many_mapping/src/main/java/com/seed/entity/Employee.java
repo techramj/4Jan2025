@@ -1,5 +1,7 @@
 package com.seed.entity;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -15,12 +18,12 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name ="emp2")
+@Table(name ="emp4")
 public class Employee {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "emp1_id_seq")
-	@SequenceGenerator(name="emp1_id_seq", sequenceName = "emp2_id_seq", initialValue = 100)
+	@SequenceGenerator(name="emp1_id_seq", sequenceName = "emp4_id_seq", initialValue = 100)
 	private Integer id;
 	
 
@@ -38,6 +41,13 @@ public class Employee {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="did")
 	private Department department;
+	
+	@ManyToMany
+	@JoinTable(name ="emp_project", 
+	joinColumns = { @JoinColumn(name ="emp_id")},
+	inverseJoinColumns = {@JoinColumn(name="p_id")}
+	)
+	private List<Project> projects;
 	
 	
 	public Integer getId() {
@@ -78,6 +88,14 @@ public class Employee {
 	
 	public Department getDepartment() {
 		return department;
+	}
+	
+	public List<Project> getProjects() {
+		return projects;
+	}
+	
+	public void setProjects(List<Project> projects) {
+		this.projects = projects;
 	}
 
 
