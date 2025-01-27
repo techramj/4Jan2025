@@ -31,3 +31,25 @@ class Employee {
 }
 ```
 
+# Mapping
+1. One to One
+```
+Employee  <----> Passport
+
+```
+
+2. Many to One / One to Many
+```
+Employee  ----->  Department
+
+
+```
+
+3. Many to Many
+```
+Employee    <----------->  Project
+
+
+```
+
+4. Mapping for inheritance.
