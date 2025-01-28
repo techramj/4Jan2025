@@ -26,6 +26,11 @@ public class Passport {
 	
 	@Column(name="expiry_date")
 	private Date expiryDate;
+	
+	public Passport() {
+		// TODO Auto-generated constructor stub
+	}
+	
 
 	public Long getPassportId() {
 		return passportId;
@@ -45,6 +50,10 @@ public class Passport {
 
 	public Date getExpiryDate() {
 		return expiryDate;
+	}
+	
+	public void setExpiryDate(Date expiryDate) {
+		this.expiryDate = expiryDate;
 	}
 	
 

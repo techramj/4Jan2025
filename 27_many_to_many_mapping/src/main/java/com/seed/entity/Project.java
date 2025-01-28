@@ -1,5 +1,6 @@
 package com.seed.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -26,10 +27,14 @@ public class Project {
 	
 	
 	@ManyToMany(mappedBy = "projects")
-	private List<Employee> employees;
+	private List<Employee> employees  = new ArrayList<Employee>();
 	
 	public Project() {
-		// TODO Auto-generated constructor stub
+		
+	}
+	
+	public Project(String name) {
+		this.name = name;
 	}
 
 	public Integer getProjectId() {
@@ -53,9 +58,13 @@ public class Project {
 	}
 
 	public void setEmployees(List<Employee> employees) {
-		this.employees = employees;
+		this.employees.addAll(employees);
 	}
 	
+	
+	public void addEmployee(Employee emp) {
+		employees.add(emp);
+	}
 	
 
 }

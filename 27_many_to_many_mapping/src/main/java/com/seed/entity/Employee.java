@@ -1,5 +1,6 @@
 package com.seed.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -33,21 +34,21 @@ public class Employee {
 	private Double salary;
 	
 	
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER )
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="passport_id")
 	private Passport passport;
 	
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name="did")
 	private Department department;
 	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name ="emp_project", 
 	joinColumns = { @JoinColumn(name ="emp_id")},
 	inverseJoinColumns = {@JoinColumn(name="p_id")}
 	)
-	private List<Project> projects;
+	private List<Project> projects = new ArrayList<Project>();
 	
 	
 	public Integer getId() {
@@ -95,8 +96,11 @@ public class Employee {
 	}
 	
 	public void setProjects(List<Project> projects) {
-		this.projects = projects;
+		this.projects.addAll(projects);
 	}
-
+	
+	public void addProject(Project project) {
+		this.projects.add(project);
+	}
 
 }

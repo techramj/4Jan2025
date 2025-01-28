@@ -8,9 +8,11 @@ import org.hibernate.SessionFactory;
 import com.seed.dao.DepartmentDao;
 import com.seed.dao.EmployeeDao;
 import com.seed.dao.PassportDao;
+import com.seed.dao.ProjectDao;
 import com.seed.entity.Department;
 import com.seed.entity.Employee;
 import com.seed.entity.Passport;
+import com.seed.entity.Project;
 import com.seed.util.HibernateUtil;
 
 public class Test1 {
@@ -21,7 +23,7 @@ public class Test1 {
 		System.out.println(sf);
 		
 		//addSampleEmployee();
-		//fetchExample();
+		fetchExample();
 		
 	}
 	
@@ -36,46 +38,87 @@ public class Test1 {
 	
 	public static void addSampleEmployee() {
 		
+		EmployeeDao empDao = new EmployeeDao();
+		PassportDao passportDao = new PassportDao();
+		DepartmentDao deptDao = new DepartmentDao();
+		ProjectDao projectDao = new ProjectDao();
+		
 		//2 employees
 		// 2 passport
 		// 1 dept
 		
-		EmployeeDao empDao = new EmployeeDao();
-		PassportDao passportDao = new PassportDao();
-		DepartmentDao deptDao = new DepartmentDao();
+		//4 departments
+		Department it = new Department("IT");
+		Department hr = new Department("HR");
+		Department account = new Department("Account");
+		Department admin = new Department("Admin");
 		
-		Department d1 = new Department("IT");
-		deptDao.save(d1);
-
+		deptDao.save(it);
+		deptDao.save(hr);
+		deptDao.save(account);
+		deptDao.save(admin);
 		
-		Employee emp = new Employee();
-		emp.setName("Jack");
-		emp.setSalary(5000.0);
+		//4 Project project
+		Project ems = new Project("EMS");
+		Project mediclaim = new Project("Mediclaim");
+		Project horoscope = new Project("Horoscope");
+		Project sc = new Project("Social Connect");
 		
-		Passport p1 =new Passport();
-		p1.setPassportNumber("ABCDEFGHI");
-		p1.setExpiryDate(LocalDate.of(2030, 12, 20));
-		emp.setPassport(p1);
+		projectDao.save(ems);
+		projectDao.save(mediclaim);
+		projectDao.save(horoscope);
+		projectDao.save(sc);
+		
+	
+		
+		//3 Passport
+		Passport passport1 = createPassport("ABcdefgh1234", new Date(2030,4,4));
+		Passport passport2 = createPassport("ABcdefgh1234", new Date(2030,4,4));
+		Passport passport3 = createPassport("ABcdefgh1234", new Date(2030,4,4));
+		
+		passportDao.save(passport1);
+		passportDao.save(passport2);
+		passportDao.save(passport3);
 		
 		
+		Employee emp1 = createEmployee("Jack", 5000, passport1, it);
+		Employee emp2 = createEmployee("Jessica", 15000, passport2, it);
+		Employee emp3 = createEmployee("Sam", 20000, passport3, hr);
 		
-		emp.setDepartment(d1);
+		ems.addEmployee(emp1);
+		ems.addEmployee(emp2);
+		mediclaim.addEmployee(emp3);
+		sc.addEmployee(emp3);
 		
-		//passportDao.save(p1);
-		empDao.save(emp);
 		
-		Employee emp2 = new Employee();
-		emp2.setName("Jessica");
-		emp2.setSalary(9000.0);
+		emp1.addProject(ems);
+		emp2.addProject(ems);
 		
-		Passport p2 = new Passport();
-		p2.setPassportNumber("ABCABCABCABC");
-		emp2.setPassport(p2);
-		emp2.setDepartment(d1);
+		emp3.addProject(mediclaim);
+		emp3.addProject(sc);
 		
+		empDao.save(emp1);
 		empDao.save(emp2);
+		empDao.save(emp3);
+		
 	}
 	
+	
+	private static Passport createPassport(String passNo, Date expiryDate) {
+		Passport p = new Passport();
+		p.setExpiryDate(expiryDate);
+		p.setPassportNumber(passNo);
+		return p;
+	}
+	
+	private static Employee createEmployee(String name, double salary, Passport passport, Department dept ) {
+		Employee emp = new Employee();
+		emp.setName(name);
+		emp.setSalary(salary);
+		emp.setPassport(passport);
+		emp.setDepartment(dept);
+		return emp;
+	}
 	
 	
 
