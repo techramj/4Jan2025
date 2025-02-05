@@ -51,7 +51,7 @@ body: json object
 
 
 update employee
-PUT: /employees/{id}
+PUT: /employees
 body
 {
 
@@ -62,4 +62,7 @@ status code:
 2XX  -> success
 3XX  -> redirect
 4XX  -> client side issue
-5XX
+5XX  -> serverside error
+
+
+# customize exception handling in springboot
